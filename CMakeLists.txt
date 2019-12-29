@@ -13,5 +13,7 @@ include_directories (
 
 add_executable ( cstm
      src/main.c
+     src/state.c
+     include/state.h
      )
 
