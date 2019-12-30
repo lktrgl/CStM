@@ -15,5 +15,7 @@ add_executable ( cstm
      src/main.c
      src/state.c
      include/state.h
+     src/transition.c
+     include/transition.h
      )
 
