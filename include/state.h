@@ -20,6 +20,13 @@ typedef struct state_desc_tag
 } state_desc_t;
 
 void state_init_defaults ( state_desc_t* state_ptr );
+void state_init (
+  state_desc_t* state_ptr,
+  void* data_ptr,
+  state_cb_t enter_handler,
+  state_cb_t run_handler,
+  state_cb_t leave_handler
+);
 void state_do ( state_desc_t* state_ptr, void* param_cond_z, state_status_t* state_status_ptr );
 
 #endif /* STATE_H_INCLUDED */
