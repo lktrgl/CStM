@@ -1,8 +1,7 @@
-#ifndef STATE_H_INCLUDED
-#define STATE_H_INCLUDED
+#ifndef STATE_DESC_H_INCLUDED
+#define STATE_DESC_H_INCLUDED
 
-
-typedef int ( *state_cb_t ) ( void* param );
+#include <state_handler.h>
 
 typedef struct state_status_tag
 {
@@ -13,13 +12,13 @@ typedef struct state_status_tag
 
 typedef struct state_desc_tag
 {
+  state_status_t status;
   void* data_ptr;
-  state_cb_t enter_state;
-  state_cb_t run;
-  state_cb_t leave_state;
+  state_handler_desc_t handler;
 } state_desc_t;
 
 void state_init_defaults ( state_desc_t* state_ptr );
+
 void state_init (
   state_desc_t* state_ptr,
   void* data_ptr,
@@ -27,6 +26,5 @@ void state_init (
   state_cb_t run_handler,
   state_cb_t leave_handler
 );
-void state_do ( state_desc_t* state_ptr, void* param_cond_z, state_status_t* state_status_ptr );
 
-#endif /* STATE_H_INCLUDED */
+#endif /* STATE_DESC_H_INCLUDED */
