@@ -13,21 +13,13 @@ include_directories (
 
 add_executable ( cstm
      src/main.c
-     src/state_desc.c
-     include/state_desc.h
      src/state_node.c
      include/state_node.h
+     src/state_handler.c
+     include/state_handler.h
      src/state_transition.c
      include/state_transition.h
      src/state_machine.c
      include/state_machine.h
-     src/state_handler.c
-     include/state_handler.h
-     include/custom_state_enum.h
-     include/custom_transition_enum.h
-     src/custom_state_handler.c
-     include/custom_state_handler.h
-     src/custom_state_transition.c
-     include/custom_state_transition.h
      )
 
