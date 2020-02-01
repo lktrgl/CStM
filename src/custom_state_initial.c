@@ -2,10 +2,13 @@
 
 #include <custom_state_enum.h>
 #include <custom_state_data.h>
+#include <custom_state_default_handler.h>
 
 #include <state_default_handler.h>
 
 #include <stddef.h>
+
+//-----------------------------------------------------------------------------
 
 static void init_hardware ( void* data )
 {
@@ -19,6 +22,8 @@ static const state_handler_desc_t state_handler_initial =
   .leave = NULL
 };
 
+//-----------------------------------------------------------------------------
+
 static const state_transition_desc_t state_transition_initial =
 {
   .is_transition = transit_always,
@@ -27,8 +32,11 @@ static const state_transition_desc_t state_transition_initial =
 
 static const state_transition_desc_t* state_transitions_initial[] =
 {
+  &g_state_transition_on_failure,
   &state_transition_initial
 };
+
+//-----------------------------------------------------------------------------
 
 const state_node_desc_t g_custom_state_initial =
 {

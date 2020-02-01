@@ -9,11 +9,15 @@
 
 #include <stddef.h>
 
+//-----------------------------------------------------------------------------
+
 static const state_node_desc_t* state_nodes_custom[] =
 {
   [ST_INITIAL] = &g_custom_state_initial,
   [ST_FIRST_TURN_ON] = &g_custom_state_first_turn_on
 };
+
+//-----------------------------------------------------------------------------
 
 state_diagram_desc_t g_state_diagram_custom =
 {

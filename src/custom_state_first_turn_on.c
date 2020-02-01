@@ -8,6 +8,8 @@
 
 #include <stddef.h>
 
+//-----------------------------------------------------------------------------
+
 static void sleep_until_first_turn_on ( void* data )
 {
   custom_state_data_desc_t* d = ( custom_state_data_desc_t* ) data;
@@ -24,6 +26,8 @@ static const state_handler_desc_t state_handler_first_turn_on =
   .leave = turn_vent_off
 };
 
+//-----------------------------------------------------------------------------
+
 static const state_transition_desc_t state_transition_first_turn_on =
 {
   .is_transition = transit_always,
@@ -32,8 +36,13 @@ static const state_transition_desc_t state_transition_first_turn_on =
 
 static const state_transition_desc_t* state_transitions_first_turn_on[] =
 {
+  &g_state_transition_on_failure,
+  &g_state_transition_on_wet,
+  &g_state_transition_on_dark,
   &state_transition_first_turn_on
 };
+
+//-----------------------------------------------------------------------------
 
 const state_node_desc_t g_custom_state_first_turn_on =
 {

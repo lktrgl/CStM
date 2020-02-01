@@ -2,6 +2,8 @@
 
 #include <stddef.h>
 
+//-----------------------------------------------------------------------------
+
 int run_state_machine ( state_diagram_desc_t* diagram )
 {
   if ( diagram )
