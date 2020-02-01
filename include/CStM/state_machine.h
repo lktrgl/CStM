@@ -1,7 +1,7 @@
 #ifndef STATE_MACHINE_H_INCLUDED
 #define STATE_MACHINE_H_INCLUDED
 
-#include <state_node.h>
+#include <CStM/state_node.h>
 
 #include <stdint.h>
 

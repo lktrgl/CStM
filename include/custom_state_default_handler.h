@@ -1,7 +1,7 @@
 #ifndef CUSTOM_STATE_DEFAULT_HANDLER_H_INCLUDED
 #define CUSTOM_STATE_DEFAULT_HANDLER_H_INCLUDED
 
-#include <state_transition.h>
+#include <CStM/state_transition.h>
 
 void turn_vent_on ( void* data );
 void turn_vent_off ( void* data );

@@ -9,7 +9,7 @@
 #include <custom_state_on_wet.h>
 #include <custom_state_failure.h>
 
-#include <state_node.h>
+#include <CStM/state_node.h>
 
 //-----------------------------------------------------------------------------
 

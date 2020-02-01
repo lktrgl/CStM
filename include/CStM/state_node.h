@@ -1,8 +1,8 @@
 #ifndef STATE_NODE_H_INCLUDED
 #define STATE_NODE_H_INCLUDED
 
-#include <state_handler.h>
-#include <state_transition.h>
+#include <CStM/state_handler.h>
+#include <CStM/state_transition.h>
 
 #include <stdint.h>
 
