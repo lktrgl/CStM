@@ -38,5 +38,9 @@ add_executable ( cstm
      include/custom_state_on_dark.h
      src/custom_state_on_wet.c
      include/custom_state_on_wet.h
+     src/custom_state_turn_off.c
+     include/custom_state_turn_off.h
+     src/custom_state_failure.c
+     include/custom_state_failure.h
      )
 

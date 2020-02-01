@@ -8,6 +8,7 @@ typedef struct custom_state_data_desc_tag
   uint16_t delay_first_time_on;
   uint16_t delay_on_dark;
   uint16_t delay_on_wet;
+  uint16_t delay_on_turn_off;
 
   uint16_t delay_blink_failure_led;
 
