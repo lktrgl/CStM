@@ -1,5 +1,6 @@
 #include <state_machine.h>
 
+#include <stddef.h>
 
 int run_state_machine ( state_diagram_desc_t* diagram )
 {
@@ -36,11 +37,21 @@ int run_state_machine ( state_diagram_desc_t* diagram )
               if ( ( *transition )->is_transition ( data ) )
               {
                 keep_state = 0;
-                diagram->current_state = diagram->states[ ( *transition )->next_state_node_index];
+
+                if ( ( *transition )->next_state_node_index <= diagram->states_count )
+                {
+                  diagram->current_state = diagram->states[ ( *transition )->next_state_node_index];
+                }
+                else
+                {
+                  diagram->current_state = NULL;
+                }
+
                 break;
               }
             }
-          }
+
+          } // if ( current_state->transitions )
         }
         while ( keep_state );
 
@@ -48,9 +59,12 @@ int run_state_machine ( state_diagram_desc_t* diagram )
         {
           state->leave ( data );
         }
-      }
-    }
-  }
+
+      } // if ( diagram->current_state->state )
+
+    } // while ( diagram->current_state )
+
+  } // if ( diagram )
 
   return 0;
 }

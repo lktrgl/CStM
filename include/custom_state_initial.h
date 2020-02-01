@@ -3,6 +3,6 @@
 
 #include <state_node.h>
 
-extern state_node_desc_t custom_state_initial;
+extern const state_node_desc_t custom_state_initial;
 
 #endif /* CUSTOM_STATE_INITIAL_H_INCLUDED */

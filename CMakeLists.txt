@@ -21,6 +21,7 @@ add_executable ( cstm
      include/state_transition.h
      src/state_machine.c
      include/state_machine.h
+     include/custom_state_enum.h
      src/custom_state_diagram.c
      include/custom_state_diagram.h
      src/custom_state_initial.c
