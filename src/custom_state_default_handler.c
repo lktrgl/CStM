@@ -3,6 +3,8 @@
 #include <custom_state_enum.h>
 #include <custom_state_data.h>
 
+#include <state_default_handler.h>
+
 //-----------------------------------------------------------------------------
 
 void turn_vent_on ( void* data )
@@ -82,4 +84,12 @@ const state_transition_desc_t g_state_transition_on_failure =
 {
   .is_transition = is_failure,
   .next_state_node_index = ST_FAILURE
+};
+
+//-----------------------------------------------------------------------------
+
+const state_transition_desc_t g_state_transition_to_off =
+{
+  .is_transition = transit_always,
+  .next_state_node_index = ST_TURN_OFF
 };

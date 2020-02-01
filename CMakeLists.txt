@@ -34,5 +34,7 @@ add_executable ( cstm
      include/custom_state_initial.h
      src/custom_state_first_turn_on.c
      include/custom_state_first_turn_on.h
+     src/custom_state_on_dark.c
+     include/custom_state_on_dark.h
      )
 
