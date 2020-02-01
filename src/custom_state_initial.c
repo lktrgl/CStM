@@ -1,38 +1,39 @@
 #include <custom_state_initial.h>
 
 #include <custom_state_enum.h>
+#include <custom_state_data.h>
+
+#include <state_default_handler.h>
 
 #include <stddef.h>
 
-static const state_handler_desc_t initial_state_dummy =
+static void init_hardware ( void* data )
+{
+  ( void ) data;
+}
+
+static const state_handler_desc_t state_handler_initial =
 {
   .enter = NULL,
-  .run = NULL,
+  .run = init_hardware,
   .leave = NULL
 };
 
-static uint8_t always_transit ( void* data )
+static const state_transition_desc_t state_transition_initial =
 {
-  ( void ) data;
-
-  return 1;
-}
-
-static const state_transition_desc_t transition_initial_dummy =
-{
-  .is_transition = always_transit,
+  .is_transition = transit_always,
   .next_state_node_index = ST_FIRST_TURN_ON
 };
 
-static const state_transition_desc_t* initial_transitions[] =
+static const state_transition_desc_t* state_transitions_initial[] =
 {
-  &transition_initial_dummy
+  &state_transition_initial
 };
 
-const state_node_desc_t custom_state_initial =
+const state_node_desc_t g_custom_state_initial =
 {
-  .data = NULL,
-  .state = &initial_state_dummy,
-  .transitions = initial_transitions,
-  .transitions_count = sizeof ( initial_transitions ) / sizeof ( initial_transitions[0] )
+  .data = &g_state_data,
+  .state = &state_handler_initial,
+  .transitions = state_transitions_initial,
+  .transitions_count = sizeof ( state_transitions_initial ) / sizeof ( state_transitions_initial[0] )
 };

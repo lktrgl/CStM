@@ -1,20 +1,23 @@
 #include <custom_state_diagram.h>
 
 #include <custom_state_enum.h>
+#include <custom_state_data.h>
 #include <custom_state_initial.h>
+#include <custom_state_first_turn_on.h>
 
 #include <state_node.h>
 
 #include <stddef.h>
 
-static const state_node_desc_t* custom_nodes[] =
+static const state_node_desc_t* state_nodes_custom[] =
 {
-  [ST_INITIAL] = &custom_state_initial
+  [ST_INITIAL] = &g_custom_state_initial,
+  [ST_FIRST_TURN_ON] = &g_custom_state_first_turn_on
 };
 
-state_diagram_desc_t custom_state_diagram =
+state_diagram_desc_t g_state_diagram_custom =
 {
-  .current_state = &custom_state_initial,
-  .states = custom_nodes,
-  .states_count = sizeof ( custom_nodes ) / sizeof ( custom_nodes[0] )
+  .current_state = &g_custom_state_initial,
+  .states = state_nodes_custom,
+  .states_count = sizeof ( state_nodes_custom ) / sizeof ( state_nodes_custom[0] )
 };

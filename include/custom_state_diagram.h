@@ -3,6 +3,6 @@
 
 #include <state_machine.h>
 
-extern state_diagram_desc_t custom_state_diagram;
+extern state_diagram_desc_t g_state_diagram_custom;
 
 #endif /* CUSTOM_STATE_MACHINE_H_INCLUDED */

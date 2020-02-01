@@ -21,10 +21,18 @@ add_executable ( cstm
      include/state_transition.h
      src/state_machine.c
      include/state_machine.h
+     src/state_default_handler.c
+     include/state_default_handler.h
      include/custom_state_enum.h
+     src/custom_state_default_handler.c
+     include/custom_state_default_handler.h
+     src/custom_state_data.c
+     include/custom_state_data.h
      src/custom_state_diagram.c
      include/custom_state_diagram.h
      src/custom_state_initial.c
      include/custom_state_initial.h
+     src/custom_state_first_turn_on.c
+     include/custom_state_first_turn_on.h
      )
 
