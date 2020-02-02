@@ -42,5 +42,7 @@ add_executable ( cstm
      include/custom_state_turn_off.h
      src/custom_state_failure.c
      include/custom_state_failure.h
+     src/trace/dbgprn.c
+     include/trace/dbgprn.h
      )
 

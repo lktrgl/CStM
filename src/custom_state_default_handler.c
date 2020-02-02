@@ -71,13 +71,7 @@ static uint8_t is_failure ( void* data )
 {
   custom_state_data_desc_t* d = ( custom_state_data_desc_t* ) data;
 
-  if ( d->is_failure )
-  {
-    d->is_failure = 0;
-    return 1;
-  }
-
-  return 0;
+  return d->is_failure;
 }
 
 const state_transition_desc_t g_state_transition_on_failure =

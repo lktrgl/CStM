@@ -10,7 +10,7 @@
 
 //-----------------------------------------------------------------------------
 
-static void sleep_until_on_dark ( void* data )
+static void sleep_until_on_wet ( void* data )
 {
   custom_state_data_desc_t* d = ( custom_state_data_desc_t* ) data;
 
@@ -22,7 +22,7 @@ static void sleep_until_on_dark ( void* data )
 static const state_handler_desc_t state_handler_on_wet =
 {
   .enter = turn_vent_on,
-  .run = sleep_until_on_dark,
+  .run = sleep_until_on_wet,
   .leave = turn_vent_off
 };
 

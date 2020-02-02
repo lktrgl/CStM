@@ -14,7 +14,6 @@ static void sleep_until_any_event ( void* data )
   custom_state_data_desc_t* d = ( custom_state_data_desc_t* ) data;
 
   ( void ) d;
-
   // sleep for (d->delay_on_turn_off) seconds
 }
 
