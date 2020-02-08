@@ -11,8 +11,7 @@ include_directories (
      include
      )
 
-add_executable ( cstm
-     src/main.c
+add_library ( cstm
      src/CStM/state_node.c
      include/CStM/state_node.h
      src/CStM/state_handler.c
