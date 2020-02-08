@@ -23,25 +23,6 @@ add_executable ( cstm
      include/CStM/state_machine.h
      src/CStM/state_default_handler.c
      include/CStM/state_default_handler.h
-     include/custom_state_enum.h
-     src/custom_state_default_handler.c
-     include/custom_state_default_handler.h
-     src/custom_state_data.c
-     include/custom_state_data.h
-     src/custom_state_diagram.c
-     include/custom_state_diagram.h
-     src/custom_state_initial.c
-     include/custom_state_initial.h
-     src/custom_state_first_turn_on.c
-     include/custom_state_first_turn_on.h
-     src/custom_state_on_dark.c
-     include/custom_state_on_dark.h
-     src/custom_state_on_wet.c
-     include/custom_state_on_wet.h
-     src/custom_state_turn_off.c
-     include/custom_state_turn_off.h
-     src/custom_state_failure.c
-     include/custom_state_failure.h
      src/trace/dbgprn.c
      include/trace/dbgprn.h
      )
