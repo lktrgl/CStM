@@ -10,9 +10,16 @@
 
 static void s_work_state_run ( void* data )
 {
-  ( void ) data;
+  app_data_desc_t* app_data = ( app_data_desc_t* ) data;
+  ( void ) app_data;
 
   MY_CALL_IN();
+
+#if defined(APP_SIMULATE_FAILURE_ENABLED)
+
+  app_data->has_failure = 1;
+
+#endif
 
   MY_CALL_OUT();
 

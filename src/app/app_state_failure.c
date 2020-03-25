@@ -54,10 +54,44 @@ static const state_transition_desc_t s_leave_failure_state =
   .next_state_node_index = STATE_INIT
 };
 
+
+static uint8_t s_leave_failure_singleshot_state_transitition ( void* data )
+{
+  app_data_desc_t* app_data = ( app_data_desc_t* ) data;
+
+  MY_CALL_IN();
+
+#if defined(APP_SINGLE_FAILURE_SHOT_ENABLED)
+
+  if ( app_data->has_failure )
+  {
+    app_data->init_done = 0;
+
+    MY_CALL_OUT();
+
+    return 1;
+  }
+  else
+
+#endif
+
+  {
+    MY_CALL_OUT();
+
+    return 0;
+  }
+}
+
+static const state_transition_desc_t s_leave_failure_singleshot_state =
+{
+  .is_transition = s_leave_failure_singleshot_state_transitition,
+  .next_state_node_index = STATE_COUNT
+};
+
 static const state_transition_desc_t* s_failure_state_transitions[] =
 {
-  &g_leave_on_failure,
   &s_leave_failure_state,
+  &s_leave_failure_singleshot_state
 };
 
 const state_node_desc_t g_app_failure_state =
