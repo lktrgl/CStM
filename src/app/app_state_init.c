@@ -2,10 +2,10 @@
 #include <app/app_data.h>
 #include <app/app_states_enum.h>
 #include <app/app_failure_transition.h>
+#include <app/app_cfg.h>
 
 #include <stddef.h>
 
-#define DBGPRN_ENABLED
 #include <trace/dbgprn.h>
 
 static void s_init_state_run ( void* data )

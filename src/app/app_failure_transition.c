@@ -1,8 +1,8 @@
 #include <app/app_failure_transition.h>
 #include <app/app_data.h>
 #include <app/app_states_enum.h>
+#include <app/app_cfg.h>
 
-#define DBGPRN_ENABLED
 #include <trace/dbgprn.h>
 
 static uint8_t s_failure_transitition ( void* data )

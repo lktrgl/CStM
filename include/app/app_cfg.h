@@ -1,0 +1,6 @@
+#ifndef INCLUDE_APP_APP_CFG_H_
+#define INCLUDE_APP_APP_CFG_H_
+
+#define DBGPRN_ENABLED
+
+#endif /* INCLUDE_APP_APP_CFG_H_ */

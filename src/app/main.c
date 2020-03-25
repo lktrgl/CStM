@@ -1,6 +1,6 @@
 #include <app/app_state_machine.h>
+#include <app/app_cfg.h>
 
-#define DBGPRN_ENABLED
 #include <trace/dbgprn.h>
 
 int main ( int argc, char** argv )
