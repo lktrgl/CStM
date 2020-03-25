@@ -4,16 +4,16 @@
 
 //-----------------------------------------------------------------------------
 
-int run_state_machine ( state_diagram_desc_t* diagram )
+void run_state_machine ( state_diagram_desc_t* diagram )
 {
   if ( diagram )
   {
     while ( diagram->current_state )
     {
-      if ( diagram->current_state->state )
+      if ( diagram->current_state->state_handler )
       {
         const state_node_desc_t* current_state = diagram->current_state;
-        const state_handler_desc_t* state = current_state->state;
+        const state_handler_desc_t* state = current_state->state_handler;
         void* data = current_state->data;
 
         if ( state->enter )
@@ -67,6 +67,4 @@ int run_state_machine ( state_diagram_desc_t* diagram )
     } // while ( diagram->current_state )
 
   } // if ( diagram )
-
-  return 0;
 }

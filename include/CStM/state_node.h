@@ -10,7 +10,7 @@ typedef struct state_node_desc_tag
 {
   void* data;
 
-  const state_handler_desc_t* state;
+  const state_handler_desc_t* state_handler;
 
   const state_transition_desc_t** transitions;
   const uint8_t transitions_count;

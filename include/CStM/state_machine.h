@@ -13,6 +13,6 @@ typedef struct state_machine_desc_tag
   const uint8_t states_count;
 } state_diagram_desc_t;
 
-int run_state_machine ( state_diagram_desc_t* machine );
+void run_state_machine ( state_diagram_desc_t* machine );
 
 #endif /* STATE_MACHINE_H_INCLUDED */

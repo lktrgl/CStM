@@ -24,5 +24,19 @@ add_library ( cstm
      include/CStM/state_default_handler.h
      src/trace/dbgprn.c
      include/trace/dbgprn.h
+
+     include/app/app_states_enum.h
+     src/app/app_data.c
+     include/app/app_data.h
+     src/app/app_state_init.c
+     include/app/app_state_init.h
+     src/app/app_state_work.c
+     include/app/app_state_work.h
+     src/app/app_state_failure.c
+     include/app/app_state_failure.h
+     src/app/app_failure_transition.c
+     include/app/app_failure_transition.h
+     src/app/app_state_machine.c
+     include/app/app_state_machine.h
      )
 
