@@ -33,7 +33,7 @@ add_library ( cstm
 add_executable(cstm_sample
      ${libsources}
 
-     src/main.c
+     src/app/main.c
      include/app/app_states_enum.h
      src/app/app_data.c
      include/app/app_data.h
