@@ -11,7 +11,7 @@ include_directories (
      include
      )
 
-add_library ( cstm
+set (libsources ${libsources}
      src/CStM/state_node.c
      include/CStM/state_node.h
      src/CStM/state_handler.c
@@ -24,7 +24,16 @@ add_library ( cstm
      include/CStM/state_default_handler.h
      src/trace/dbgprn.c
      include/trace/dbgprn.h
+     )
 
+add_library ( cstm
+    ${libsources}
+     )
+
+add_executable(cstm_sample
+     ${libsources}
+
+     src/main.c
      include/app/app_states_enum.h
      src/app/app_data.c
      include/app/app_data.h
