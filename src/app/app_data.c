@@ -1,3 +1,5 @@
+#include <app/app_cfg.h>
+
 #include <app/app_data.h>
 
 app_data_desc_t g_app_data =

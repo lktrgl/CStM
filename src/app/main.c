@@ -1,7 +1,8 @@
-#include <app/app_state_machine.h>
 #include <app/app_cfg.h>
 
-#include <trace/dbgprn.h>
+#include <app/app_state_machine.h>
+
+#include <lggm/dbgprn.h>
 
 int main ( int argc, char** argv )
 {

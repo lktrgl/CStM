@@ -9,6 +9,7 @@ set ( CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -g3 -o0" )
 
 include_directories (
      include
+     contrib/lggm/include
      )
 
 set (libsources ${libsources}
@@ -22,8 +23,8 @@ set (libsources ${libsources}
      include/CStM/state_machine.h
      src/CStM/state_default_handler.c
      include/CStM/state_default_handler.h
-     src/trace/dbgprn.c
-     include/trace/dbgprn.h
+     contrib/lggm/src/lggm/dbgprn.c
+     contrib/lggm/include/lggm/dbgprn.h
      )
 
 add_library ( cstm

@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 
-#include <trace/dbgprn.h>
+#include <lggm/dbgprn.h>
 
 //-----------------------------------------------------------------------------
 

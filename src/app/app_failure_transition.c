@@ -1,9 +1,10 @@
+#include <app/app_cfg.h>
+
 #include <app/app_failure_transition.h>
 #include <app/app_data.h>
 #include <app/app_states_enum.h>
-#include <app/app_cfg.h>
 
-#include <trace/dbgprn.h>
+#include <lggm/dbgprn.h>
 
 static uint8_t s_failure_transitition ( void* data )
 {
