@@ -12,11 +12,11 @@ static void s_init_state_run ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
 
-  MY_CALL_IN();
+  LGGM_CALL_IN();
 
   app_data->init_done = 1;
 
-  MY_CALL_OUT();
+  LGGM_CALL_OUT();
 }
 
 static const state_handler_desc_t s_init_state_handler =
@@ -31,17 +31,17 @@ static uint8_t s_leave_init_state_transitition ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
 
-  MY_CALL_IN();
+  LGGM_CALL_IN();
 
   if ( app_data->init_done && ! app_data->has_failure )
   {
-    MY_CALL_OUT();
+    LGGM_CALL_OUT();
 
     return 1;
   }
   else
   {
-    MY_CALL_OUT();
+    LGGM_CALL_OUT();
 
     return 0;
   }

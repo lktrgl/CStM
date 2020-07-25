@@ -9,9 +9,9 @@ uint8_t transit_always ( void* data )
 {
   ( void ) data;
 
-  MY_CALL_IN();
+  LGGM_CALL_IN();
 
-  MY_CALL_OUT();
+  LGGM_CALL_OUT();
 
   return 1;
 }
