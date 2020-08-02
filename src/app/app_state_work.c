@@ -14,7 +14,7 @@ static void s_work_state_run ( void* data )
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
   ( void ) app_data;
 
-  LGGM_CALL_IN();
+  LGGM_CALL_IN_C ( 0 );
 
 #if defined(APP_SIMULATE_FAILURE_ENABLED)
 
@@ -22,7 +22,7 @@ static void s_work_state_run ( void* data )
 
 #endif
 
-  LGGM_CALL_OUT();
+  LGGM_CALL_OUT_C ( 0 );
 
 }
 

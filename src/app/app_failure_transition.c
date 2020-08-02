@@ -10,9 +10,9 @@ static uint8_t s_failure_transitition ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
 
-  LGGM_CALL_IN();
+  LGGM_CALL_IN_C ( 0 );
 
-  LGGM_CALL_OUT();
+  LGGM_CALL_OUT_C ( 0 );
 
   return app_data->has_failure;
 }
