@@ -64,6 +64,7 @@ const state_node_desc_t g_app_init_state =
 {
   .data = &g_app_data,
 
+  .state_index = STATE_INIT,
   .state_handler = &s_init_state_handler,
 
   .transitions = s_init_state_transitions,

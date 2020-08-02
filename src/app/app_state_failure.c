@@ -99,6 +99,7 @@ const state_node_desc_t g_app_failure_state =
 {
   .data = &g_app_data,
 
+  .state_index = STATE_FAILURE,
   .state_handler = &s_failure_state_handler,
 
   .transitions = s_failure_state_transitions,

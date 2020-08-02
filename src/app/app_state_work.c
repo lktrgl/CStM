@@ -42,6 +42,7 @@ const state_node_desc_t g_app_work_state =
 {
   .data = &g_app_data,
 
+  .state_index = STATE_WORK,
   .state_handler = &s_work_state_handler,
 
   .transitions = s_work_state_transitions,

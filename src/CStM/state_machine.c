@@ -18,10 +18,11 @@ void run_state_machine ( state_diagram_desc_t* diagram )
     while ( diagram->current_state )
     {
       LGGM_PRINT_MSG ( "Do current state" );
+      LGGM_PRINT_INT ( diagram->current_state->state_index );
 
       if ( diagram->current_state->state_handler )
       {
-        LGGM_PRINT_MSG ( "Do state handler(s)" );
+        LGGM_PRINT_MSG ( "Do state handlers" );
 
         const state_node_desc_t* current_state = diagram->current_state;
         const state_handler_desc_t* state = current_state->state_handler;
@@ -49,7 +50,7 @@ void run_state_machine ( state_diagram_desc_t* diagram )
 
           if ( current_state->transitions )
           {
-            LGGM_PRINT_MSG ( "Do state transition(s)" );
+            LGGM_PRINT_MSG ( "Do state transitions" );
 
             const state_transition_desc_t** transition = current_state->transitions;
 
@@ -66,6 +67,8 @@ void run_state_machine ( state_diagram_desc_t* diagram )
                   LGGM_PRINT_MSG ( "Do change state" );
 
                   diagram->current_state = diagram->states[ ( *transition )->next_state_node_index];
+
+                  LGGM_PRINT_INT ( ( *transition )->next_state_node_index );
                 }
                 else
                 {
