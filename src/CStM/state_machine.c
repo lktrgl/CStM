@@ -64,11 +64,11 @@ void run_state_machine ( state_diagram_desc_t* diagram )
 
                 if ( ( *transition )->next_state_node_index < diagram->states_count )
                 {
-                  LGGM_PRINT_MSG_C ( 0, "Do change state" );
+                  LGGM_PRINT_MSG_C ( 1, "Do change state" );
 
                   diagram->current_state = diagram->states[ ( *transition )->next_state_node_index];
 
-                  LGGM_PRINT_INT_C ( 0, ( *transition )->next_state_node_index );
+                  LGGM_PRINT_INT_C ( 1, ( *transition )->next_state_node_index );
                 }
                 else
                 {
