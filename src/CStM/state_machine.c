@@ -9,7 +9,7 @@
 
 void run_state_machine ( state_diagram_desc_t* diagram )
 {
-  LGGM_CALL_IN_C ( 0 );
+  LGGM_CALL_IN_C ( 1 );
 
   if ( diagram )
   {
@@ -92,11 +92,17 @@ void run_state_machine ( state_diagram_desc_t* diagram )
           state->leave ( data );
         }
 
-      } // if ( diagram->current_state->state )
+      } // if ( diagram->current_state->state_handler )
+      else
+      {
+        LGGM_PRINT_MSG_C ( 1, "state_handler is NULL; stopping the diagram." );
+
+        break;
+      }
 
     } // while ( diagram->current_state )
 
   } // if ( diagram )
 
-  LGGM_CALL_OUT_C ( 0 );
+  LGGM_CALL_OUT_C ( 1 );
 }
