@@ -21,6 +21,8 @@ set (libsources ${libsources}
      include/CStM/state_transition.h
      src/CStM/state_machine.c
      include/CStM/state_machine.h
+     src/CStM/vector_state_machine.c
+     include/CStM/vector_state_machine.h
      src/CStM/state_default_handler.c
      include/CStM/state_default_handler.h
      contrib/lggm/src/lggm/dbgprn.c
