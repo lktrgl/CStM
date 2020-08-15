@@ -6,6 +6,8 @@
 
 #include <stdint.h>
 
+/*---------------------------------------------------------------------------*/
+
 typedef struct state_node_desc_tag
 {
   void* data;

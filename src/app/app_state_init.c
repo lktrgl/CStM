@@ -9,6 +9,8 @@
 
 #include <lggm/dbgprn.h>
 
+/*---------------------------------------------------------------------------*/
+
 static void s_init_state_run ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
@@ -20,6 +22,8 @@ static void s_init_state_run ( void* data )
   LGGM_CALL_OUT_C ( 0 );
 }
 
+/*---------------------------------------------------------------------------*/
+
 static const state_handler_desc_t s_init_state_handler =
 {
   .enter = NULL,
@@ -27,6 +31,7 @@ static const state_handler_desc_t s_init_state_handler =
   .leave = NULL
 };
 
+/*---------------------------------------------------------------------------*/
 
 static uint8_t s_leave_init_state_transitition ( void* data )
 {
@@ -48,17 +53,23 @@ static uint8_t s_leave_init_state_transitition ( void* data )
   }
 }
 
+/*---------------------------------------------------------------------------*/
+
 static const state_transition_desc_t s_leave_init_state =
 {
   .is_transition = s_leave_init_state_transitition,
   .next_state_node_index = STATE_WORK
 };
 
+/*---------------------------------------------------------------------------*/
+
 static const state_transition_desc_t* s_init_state_transitions[] =
 {
   &g_leave_on_failure,
   &s_leave_init_state
 };
+
+/*---------------------------------------------------------------------------*/
 
 const state_node_desc_t g_app_init_state =
 {

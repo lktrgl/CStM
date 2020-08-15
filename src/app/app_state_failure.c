@@ -10,6 +10,8 @@
 
 #include <lggm/dbgprn.h>
 
+/*---------------------------------------------------------------------------*/
+
 static void s_failure_state_run ( void* data )
 {
   ( void ) data;
@@ -20,12 +22,16 @@ static void s_failure_state_run ( void* data )
 
 }
 
+/*---------------------------------------------------------------------------*/
+
 static const state_handler_desc_t s_failure_state_handler =
 {
   .enter = NULL,
   .run = s_failure_state_run,
   .leave = NULL
 };
+
+/*---------------------------------------------------------------------------*/
 
 static uint8_t s_leave_failure_state_transitition ( void* data )
 {
@@ -49,12 +55,15 @@ static uint8_t s_leave_failure_state_transitition ( void* data )
   }
 }
 
+/*---------------------------------------------------------------------------*/
+
 static const state_transition_desc_t s_leave_failure_state =
 {
   .is_transition = s_leave_failure_state_transitition,
   .next_state_node_index = STATE_INIT
 };
 
+/*---------------------------------------------------------------------------*/
 
 static uint8_t s_leave_failure_singleshot_state_transitition ( void* data )
 {
@@ -83,17 +92,23 @@ static uint8_t s_leave_failure_singleshot_state_transitition ( void* data )
   }
 }
 
+/*---------------------------------------------------------------------------*/
+
 static const state_transition_desc_t s_leave_failure_singleshot_state =
 {
   .is_transition = s_leave_failure_singleshot_state_transitition,
   .next_state_node_index = STATE_COUNT
 };
 
+/*---------------------------------------------------------------------------*/
+
 static const state_transition_desc_t* s_failure_state_transitions[] =
 {
   &s_leave_failure_state,
   &s_leave_failure_singleshot_state
 };
+
+/*---------------------------------------------------------------------------*/
 
 const state_node_desc_t g_app_failure_state =
 {

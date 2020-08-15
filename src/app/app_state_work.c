@@ -9,6 +9,8 @@
 
 #include <lggm/dbgprn.h>
 
+/*---------------------------------------------------------------------------*/
+
 static void s_work_state_run ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
@@ -26,6 +28,8 @@ static void s_work_state_run ( void* data )
 
 }
 
+/*---------------------------------------------------------------------------*/
+
 static const state_handler_desc_t s_work_state_handler =
 {
   .enter = NULL,
@@ -33,10 +37,14 @@ static const state_handler_desc_t s_work_state_handler =
   .leave = NULL
 };
 
+/*---------------------------------------------------------------------------*/
+
 static const state_transition_desc_t* s_work_state_transitions[] =
 {
   &g_leave_on_failure,
 };
+
+/*---------------------------------------------------------------------------*/
 
 const state_node_desc_t g_app_work_state =
 {

@@ -1,7 +1,11 @@
 #ifndef STATE_HANDLER_H_INCLUDED
 #define STATE_HANDLER_H_INCLUDED
 
+/*---------------------------------------------------------------------------*/
+
 typedef void ( *handler_callback_t ) ( void* data );
+
+/*---------------------------------------------------------------------------*/
 
 typedef struct state_handler_desc_tag
 {

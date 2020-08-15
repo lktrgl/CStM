@@ -8,12 +8,16 @@
 
 #include <stddef.h>
 
+/*---------------------------------------------------------------------------*/
+
 static const state_node_desc_t* s_states[STATE_COUNT] =
 {
   [STATE_INIT] = &g_app_init_state,
   [STATE_WORK] = &g_app_work_state,
   [STATE_FAILURE] = &g_app_failure_state
 };
+
+/*---------------------------------------------------------------------------*/
 
 state_diagram_desc_t g_app_state_diagram =
 {

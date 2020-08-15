@@ -5,7 +5,7 @@
 
 #include <lggm/dbgprn.h>
 
-//-----------------------------------------------------------------------------
+/*---------------------------------------------------------------------------*/
 
 void run_state_machine ( state_diagram_desc_t* diagram )
 {
@@ -81,7 +81,7 @@ void run_state_machine ( state_diagram_desc_t* diagram )
               }
             }
 
-          } // if ( current_state->transitions )
+          } /* if ( current_state->transitions ) */
         }
         while ( keep_state );
 
@@ -92,7 +92,7 @@ void run_state_machine ( state_diagram_desc_t* diagram )
           state->leave ( data );
         }
 
-      } // if ( diagram->current_state->state_handler )
+      } /* if ( diagram->current_state->state_handler ) */
       else
       {
         LGGM_PRINT_MSG_C ( 1, "state_handler is NULL; stopping the diagram." );
@@ -100,9 +100,9 @@ void run_state_machine ( state_diagram_desc_t* diagram )
         break;
       }
 
-    } // while ( diagram->current_state )
+    } /* while ( diagram->current_state ) */
 
-  } // if ( diagram )
+  } /* if ( diagram ) */
 
   LGGM_CALL_OUT_C ( 1 );
 }

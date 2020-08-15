@@ -5,6 +5,8 @@
 
 #include <stdint.h>
 
+/*---------------------------------------------------------------------------*/
+
 typedef struct state_machine_desc_tag
 {
   const state_node_desc_t* current_state;
@@ -12,6 +14,8 @@ typedef struct state_machine_desc_tag
   const state_node_desc_t** states;
   const uint8_t states_count;
 } state_diagram_desc_t;
+
+/*---------------------------------------------------------------------------*/
 
 void run_state_machine ( state_diagram_desc_t* machine );
 

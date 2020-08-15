@@ -6,6 +6,8 @@
 
 #include <lggm/dbgprn.h>
 
+/*---------------------------------------------------------------------------*/
+
 static uint8_t s_failure_transitition ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
@@ -16,6 +18,8 @@ static uint8_t s_failure_transitition ( void* data )
 
   return app_data->has_failure;
 }
+
+/*---------------------------------------------------------------------------*/
 
 const state_transition_desc_t g_leave_on_failure =
 {

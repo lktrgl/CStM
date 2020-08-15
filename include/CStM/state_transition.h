@@ -3,7 +3,11 @@
 
 #include <stdint.h>
 
+/*---------------------------------------------------------------------------*/
+
 typedef uint8_t ( *condition_callback_t ) ( void* data );
+
+/*---------------------------------------------------------------------------*/
 
 typedef struct state_transition_desc_tag
 {
