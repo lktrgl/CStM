@@ -41,11 +41,25 @@ void run_state_machine ( state_diagram_desc_t* diagram )
         {
           LGGM_PRINT_MSG_C ( 0, "Do loop state" );
 
+          if ( state->input )
+          {
+            LGGM_PRINT_MSG_C ( 0, "Do input state handler" );
+
+            state->input ( data );
+          }
+
           if ( state->run )
           {
             LGGM_PRINT_MSG_C ( 0, "Do run state handler" );
 
             state->run ( data );
+          }
+
+          if ( state->output )
+          {
+            LGGM_PRINT_MSG_C ( 0, "Do output state handler" );
+
+            state->output ( data );
           }
 
           if ( current_state->transitions )

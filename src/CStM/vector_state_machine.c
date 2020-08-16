@@ -17,11 +17,31 @@ static void s_do_enter ( const state_node_desc_t* state )
 
 /*---------------------------------------------------------------------------*/
 
+static void s_do_input ( const state_node_desc_t* state )
+{
+  if ( state->state_handler && state->state_handler->input )
+  {
+    state->state_handler->input ( state->data );
+  }
+}
+
+/*---------------------------------------------------------------------------*/
+
 static void s_do_run ( const state_node_desc_t* state )
 {
   if ( state->state_handler && state->state_handler->run )
   {
     state->state_handler->run ( state->data );
+  }
+}
+
+/*---------------------------------------------------------------------------*/
+
+static void s_do_output ( const state_node_desc_t* state )
+{
+  if ( state->state_handler && state->state_handler->output )
+  {
+    state->state_handler->output ( state->data );
   }
 }
 
@@ -106,7 +126,9 @@ void run_vector_state_machine ( vector_state_diagram_desc_t* vector_machine )
           {
             LGGM_PRINT_MSG_C ( 0, "Do run" );
 
+            s_do_input ( current_state );
             s_do_run ( current_state );
+            s_do_output ( current_state );
 
             const state_transition_desc_t* signaled_transition = s_is_condition ( current_state );
 

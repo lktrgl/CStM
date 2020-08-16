@@ -16,9 +16,9 @@ static void s_failure_state_run ( void* data )
 {
   ( void ) data;
 
-  LGGM_CALL_IN_C ( 0 );
+  LGGM_CALL_IN_C ( 1 );
 
-  LGGM_CALL_OUT_C ( 0 );
+  LGGM_CALL_OUT_C ( 1 );
 
 }
 
@@ -27,7 +27,9 @@ static void s_failure_state_run ( void* data )
 static const state_handler_desc_t s_failure_state_handler =
 {
   .enter = NULL,
+  .input = NULL,
   .run = s_failure_state_run,
+  .output = NULL,
   .leave = NULL
 };
 
@@ -37,19 +39,19 @@ static uint8_t s_leave_failure_state_transitition ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
 
-  LGGM_CALL_IN_C ( 0 );
+  LGGM_CALL_IN_C ( 1 );
 
   if ( ! app_data->has_failure )
   {
     app_data->init_done = 0;
 
-    LGGM_CALL_OUT_C ( 0 );
+    LGGM_CALL_OUT_C ( 1 );
 
     return 1;
   }
   else
   {
-    LGGM_CALL_OUT_C ( 0 );
+    LGGM_CALL_OUT_C ( 1 );
 
     return 0;
   }
@@ -69,7 +71,7 @@ static uint8_t s_leave_failure_singleshot_state_transitition ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
 
-  LGGM_CALL_IN_C ( 0 );
+  LGGM_CALL_IN_C ( 1 );
 
 #if defined(APP_SINGLE_FAILURE_SHOT_ENABLED)
 
@@ -77,7 +79,7 @@ static uint8_t s_leave_failure_singleshot_state_transitition ( void* data )
   {
     app_data->init_done = 0;
 
-    LGGM_CALL_OUT_C ( 0 );
+    LGGM_CALL_OUT_C ( 1 );
 
     return 1;
   }
@@ -86,7 +88,7 @@ static uint8_t s_leave_failure_singleshot_state_transitition ( void* data )
 #endif
 
   {
-    LGGM_CALL_OUT_C ( 0 );
+    LGGM_CALL_OUT_C ( 1 );
 
     return 0;
   }

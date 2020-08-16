@@ -15,11 +15,11 @@ static void s_init_state_run ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
 
-  LGGM_CALL_IN_C ( 0 );
+  LGGM_CALL_IN_C ( 1 );
 
   app_data->init_done = 1;
 
-  LGGM_CALL_OUT_C ( 0 );
+  LGGM_CALL_OUT_C ( 1 );
 }
 
 /*---------------------------------------------------------------------------*/
@@ -27,7 +27,9 @@ static void s_init_state_run ( void* data )
 static const state_handler_desc_t s_init_state_handler =
 {
   .enter = NULL,
+  .input = NULL,
   .run = s_init_state_run,
+  .output = NULL,
   .leave = NULL
 };
 
@@ -37,17 +39,17 @@ static uint8_t s_leave_init_state_transitition ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
 
-  LGGM_CALL_IN_C ( 0 );
+  LGGM_CALL_IN_C ( 1 );
 
   if ( app_data->init_done && ! app_data->has_failure )
   {
-    LGGM_CALL_OUT_C ( 0 );
+    LGGM_CALL_OUT_C ( 1 );
 
     return 1;
   }
   else
   {
-    LGGM_CALL_OUT_C ( 0 );
+    LGGM_CALL_OUT_C ( 1 );
 
     return 0;
   }
