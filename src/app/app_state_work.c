@@ -1,9 +1,10 @@
-#include <app/app_cfg.h>
-
 #include <app/app_state_work.h>
+
+#include <app/app_cfg.h>
 #include <app/app_data.h>
 #include <app/app_states_enum.h>
 #include <app/app_failure_transition.h>
+#include <app/app_inp_outp.h>
 
 #include <stddef.h>
 
@@ -33,9 +34,9 @@ static void s_work_state_run ( void* data )
 static const state_handler_desc_t s_work_state_handler =
 {
   .enter = NULL,
-  .input = NULL,
+  .input = process_input,
   .run = s_work_state_run,
-  .output = NULL,
+  .output = process_output,
   .leave = NULL
 };
 

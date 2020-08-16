@@ -46,6 +46,8 @@ add_executable(cstm_sample
      include/app/app_state_failure.h
      src/app/app_failure_transition.c
      include/app/app_failure_transition.h
+     src/app/app_inp_outp.c
+     include/app/app_inp_outp.h
      src/app/app_state_machine.c
      include/app/app_state_machine.h
      )

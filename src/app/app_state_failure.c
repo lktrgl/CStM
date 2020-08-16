@@ -1,10 +1,11 @@
-#include <app/app_cfg.h>
-
 #include <app/app_state_failure.h>
+
+#include <app/app_cfg.h>
 #include <app/app_data.h>
 #include <app/app_state_init.h>
 #include <app/app_states_enum.h>
 #include <app/app_failure_transition.h>
+#include <app/app_inp_outp.h>
 
 #include <stddef.h>
 
@@ -19,7 +20,6 @@ static void s_failure_state_run ( void* data )
   LGGM_CALL_IN_C ( 1 );
 
   LGGM_CALL_OUT_C ( 1 );
-
 }
 
 /*---------------------------------------------------------------------------*/
@@ -27,9 +27,9 @@ static void s_failure_state_run ( void* data )
 static const state_handler_desc_t s_failure_state_handler =
 {
   .enter = NULL,
-  .input = NULL,
+  .input = process_input,
   .run = s_failure_state_run,
-  .output = NULL,
+  .output = process_output,
   .leave = NULL
 };
 

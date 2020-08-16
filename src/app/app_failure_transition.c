@@ -1,6 +1,6 @@
-#include <app/app_cfg.h>
-
 #include <app/app_failure_transition.h>
+
+#include <app/app_cfg.h>
 #include <app/app_data.h>
 #include <app/app_states_enum.h>
 

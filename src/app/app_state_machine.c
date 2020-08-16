@@ -1,6 +1,6 @@
-#include <app/app_cfg.h>
-
 #include <app/app_state_machine.h>
+
+#include <app/app_cfg.h>
 #include <app/app_state_init.h>
 #include <app/app_state_work.h>
 #include <app/app_state_failure.h>
