@@ -15,9 +15,12 @@
 
 static void s_failure_state_run ( void* data )
 {
-  ( void ) data;
+  app_data_desc_t* app_data = ( app_data_desc_t* ) data;
+  ( void ) app_data;
 
   LGGM_CALL_IN_C ( 1 );
+
+  LGGM_PRINT_STR_C ( 1, app_data->name );
 
   LGGM_CALL_OUT_C ( 1 );
 }
@@ -40,6 +43,8 @@ static uint8_t s_leave_failure_state_transitition ( void* data )
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
 
   LGGM_CALL_IN_C ( 1 );
+
+  LGGM_PRINT_STR_C ( 1, app_data->name );
 
   if ( ! app_data->has_failure )
   {
@@ -70,8 +75,11 @@ static const state_transition_desc_t s_leave_failure_state =
 static uint8_t s_leave_failure_singleshot_state_transitition ( void* data )
 {
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
+  ( void ) app_data;
 
   LGGM_CALL_IN_C ( 1 );
+
+  LGGM_PRINT_STR_C ( 1, app_data->name );
 
 #if defined(APP_SINGLE_FAILURE_SHOT_ENABLED)
 
@@ -115,6 +123,19 @@ static const state_transition_desc_t* s_failure_state_transitions[] =
 const state_node_desc_t g_app_failure_state =
 {
   .data = &g_app_data,
+
+  .state_index = STATE_FAILURE,
+  .state_handler = &s_failure_state_handler,
+
+  .transitions = s_failure_state_transitions,
+  .transitions_count = sizeof ( s_failure_state_transitions ) / sizeof ( s_failure_state_transitions[0] )
+};
+
+/*---------------------------------------------------------------------------*/
+
+const state_node_desc_t g_app_failure2_state =
+{
+  .data = &g_app_data2,
 
   .state_index = STATE_FAILURE,
   .state_handler = &s_failure_state_handler,

@@ -14,6 +14,8 @@ static uint8_t s_failure_transitition ( void* data )
 
   LGGM_CALL_IN_C ( 1 );
 
+  LGGM_PRINT_STR_C ( 1, app_data->name );
+
   LGGM_CALL_OUT_C ( 1 );
 
   return app_data->has_failure;

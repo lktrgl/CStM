@@ -18,6 +18,8 @@ static void s_init_state_run ( void* data )
 
   LGGM_CALL_IN_C ( 1 );
 
+  LGGM_PRINT_STR_C ( 1, app_data->name );
+
   app_data->init_done = 1;
 
   LGGM_CALL_OUT_C ( 1 );
@@ -41,6 +43,8 @@ static uint8_t s_leave_init_state_transitition ( void* data )
   app_data_desc_t* app_data = ( app_data_desc_t* ) data;
 
   LGGM_CALL_IN_C ( 1 );
+
+  LGGM_PRINT_STR_C ( 1, app_data->name );
 
   if ( app_data->init_done && ! app_data->has_failure )
   {
@@ -77,6 +81,19 @@ static const state_transition_desc_t* s_init_state_transitions[] =
 const state_node_desc_t g_app_init_state =
 {
   .data = &g_app_data,
+
+  .state_index = STATE_INIT,
+  .state_handler = &s_init_state_handler,
+
+  .transitions = s_init_state_transitions,
+  .transitions_count = sizeof ( s_init_state_transitions ) / sizeof ( s_init_state_transitions[0] )
+};
+
+/*---------------------------------------------------------------------------*/
+
+const state_node_desc_t g_app_init2_state =
+{
+  .data = &g_app_data2,
 
   .state_index = STATE_INIT,
   .state_handler = &s_init_state_handler,

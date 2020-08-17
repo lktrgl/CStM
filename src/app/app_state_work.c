@@ -19,6 +19,8 @@ static void s_work_state_run ( void* data )
 
   LGGM_CALL_IN_C ( 1 );
 
+  LGGM_PRINT_STR_C ( 1, app_data->name );
+
 #if defined(APP_SIMULATE_FAILURE_ENABLED)
 
   app_data->has_failure = 1;
@@ -52,6 +54,18 @@ static const state_transition_desc_t* s_work_state_transitions[] =
 const state_node_desc_t g_app_work_state =
 {
   .data = &g_app_data,
+
+  .state_index = STATE_WORK,
+  .state_handler = &s_work_state_handler,
+
+  .transitions = s_work_state_transitions,
+  .transitions_count = sizeof ( s_work_state_transitions ) / sizeof ( s_work_state_transitions[0] )
+};
+/*---------------------------------------------------------------------------*/
+
+const state_node_desc_t g_app_work2_state =
+{
+  .data = &g_app_data2,
 
   .state_index = STATE_WORK,
   .state_handler = &s_work_state_handler,
