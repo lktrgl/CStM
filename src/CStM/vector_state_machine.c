@@ -150,7 +150,7 @@ void run_vector_state_machine ( vector_state_diagram_desc_t* vector_machine )
               }
               else
               {
-                LGGM_PRINT_MSG_C ( 1, "Nonexistent state indes: do exit state machine" );
+                LGGM_PRINT_MSG_C ( 1, "Nonexistent state index: do exit state machine" );
                 current_diagram->current_state = NULL;
 
                 LGGM_PRINT_MSG_C ( 0, "Do leave" );
