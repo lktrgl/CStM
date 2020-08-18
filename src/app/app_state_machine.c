@@ -68,5 +68,5 @@ vector_state_diagram_desc_t g_app_vector_state_diagram =
 void re_init_g_app_state_diagram()
 {
   g_app_state_diagram.current_state = &g_app_init_state;
-  ((app_data_desc_t*)g_app_state_diagram.current_state->data)->has_failure = 0;
+  ( ( app_data_desc_t* ) g_app_state_diagram.current_state->data )->has_failure = 0;
 }
