@@ -7,7 +7,7 @@
 
 /*---------------------------------------------------------------------------*/
 
-typedef struct state_machine_desc_tag
+typedef struct state_diagram_desc_tag
 {
   const state_node_desc_t* current_state;
 
