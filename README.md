@@ -20,7 +20,7 @@ git clone --recurse-submodules --verbose --remote --progress https://github.com/
     && git submodule foreach --recursive "${script_file}" \
     && mkdir build \
     && cd build \
-    && cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-sdcc.cmake .. \
+    && cmake .. \
     && make all
 
 rm -vf "${script_file}"
