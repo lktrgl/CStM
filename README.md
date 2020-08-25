@@ -15,7 +15,7 @@ EOF_SCRIPT_FILE
 chmod a+x "${script_file}"
 
 git clone --recurse-submodules --verbose --remote --progress https://github.com/lktrgl/CStM.git \
-    && cd VentCtrlStm8 \
+    && cd CStM \
     && git submodule foreach --recursive git status \
     && git submodule foreach --recursive "${script_file}" \
     && mkdir build \
