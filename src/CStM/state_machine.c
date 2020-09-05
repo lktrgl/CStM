@@ -57,6 +57,29 @@ static void s_do_leave ( const state_node_desc_t* state )
 
 /*---------------------------------------------------------------------------*/
 
+static const state_transition_desc_t* s_is_condition ( const state_node_desc_t* state )
+{
+  if ( state->transitions )
+  {
+    const state_transition_desc_t** transition = state->transitions;
+    void* data = state->data;
+
+    for ( uint8_t i = 0; *transition && i < state->transitions_count; ++i, ++transition )
+    {
+      const state_transition_desc_t* transition_ptr = *transition;
+
+      if ( transition_ptr->is_transition && transition_ptr->is_transition ( data ) )
+      {
+        return transition_ptr;
+      }
+    }
+  }
+
+  return NULL;
+}
+
+/*---------------------------------------------------------------------------*/
+
 void run_state_machine ( state_diagram_desc_t* diagram )
 {
   LGGM_CALL_IN_C ( 1 );
@@ -70,12 +93,7 @@ void run_state_machine ( state_diagram_desc_t* diagram )
       LGGM_PRINT_MSG_C ( 0, "Do current state" );
       LGGM_PRINT_INT_C ( 0, diagram->current_state->state_index );
 
-      if ( diagram->current_state->state_handler )
-      {
-        LGGM_PRINT_MSG_C ( 0, "Do state handlers" );
-
         const state_node_desc_t* current_state = diagram->current_state;
-        void* data = current_state->data;
 
         LGGM_PRINT_MSG_C ( 0, "Do enter" );
 
@@ -91,54 +109,38 @@ void run_state_machine ( state_diagram_desc_t* diagram )
           s_do_run ( current_state );
           s_do_output ( current_state );
 
-          if ( current_state->transitions )
+          const state_transition_desc_t* signaled_transition = s_is_condition ( current_state );
+
+          if ( signaled_transition )
           {
-            LGGM_PRINT_MSG_C ( 0, "Do state transitions" );
-
-            const state_transition_desc_t** transition = current_state->transitions;
-
-            for ( uint8_t i = 0; *transition && i < current_state->transitions_count; ++i, ++transition )
+            if ( signaled_transition->next_state_node_index < diagram->states_count )
             {
-              LGGM_PRINT_MSG_C ( 0, "Do check transition" );
+              LGGM_PRINT_MSG_C ( 1, "Do change state" );
 
-              if ( ( *transition )->is_transition && ( *transition )->is_transition ( data ) )
-              {
-                do_run = 0;
+              diagram->current_state = diagram->states[signaled_transition->next_state_node_index];
 
-                if ( ( *transition )->next_state_node_index < diagram->states_count )
-                {
-                  LGGM_PRINT_MSG_C ( 1, "Do change state" );
+              LGGM_PRINT_MSG_C ( 0, "Do leave" );
 
-                  diagram->current_state = diagram->states[ ( *transition )->next_state_node_index];
+              s_do_leave ( current_state );
 
-                  LGGM_PRINT_INT_C ( 1, ( *transition )->next_state_node_index );
-                }
-                else
-                {
-                  LGGM_PRINT_MSG_C ( 0, "Do exit state machine" );
+              LGGM_PRINT_MSG_C ( 0, "Do enter" );
 
-                  diagram->current_state = NULL;
-                }
-
-                break;
-              }
+              s_do_enter ( diagram->current_state );
             }
+            else
+            {
+              LGGM_PRINT_MSG_C ( 1, "Nonexistent state index: do exit state machine" );
+              diagram->current_state = NULL;
 
-          } /* if ( current_state->transitions ) */
+              LGGM_PRINT_MSG_C ( 0, "Do leave" );
+
+              s_do_leave ( current_state );
+
+              do_run = 0x00;
+            }
+          } /* if ( signaled_transition ) */
         }
         while ( do_run );
-
-        LGGM_PRINT_MSG_C ( 0, "Do leave" );
-
-        s_do_leave ( current_state );
-
-      } /* if ( diagram->current_state->state_handler ) */
-      else
-      {
-        LGGM_PRINT_MSG_C ( 1, "state_handler is NULL; stopping the diagram." );
-
-        break;
-      }
 
     } /* while ( diagram->current_state ) */
 
