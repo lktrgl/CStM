@@ -105,7 +105,7 @@ void init_step_state_machine ( state_diagram_desc_t* diagram )
 
 uint8_t run_step_state_machine ( state_diagram_desc_t* diagram )
 {
-  LGGM_CALL_IN_C ( 1 );
+  LGGM_CALL_IN_C ( 0 );
 
   uint8_t do_run = 1;
 
@@ -161,7 +161,7 @@ uint8_t run_step_state_machine ( state_diagram_desc_t* diagram )
 
   } /* if ( diagram ) */
 
-  LGGM_CALL_OUT_C ( 1 );
+  LGGM_CALL_OUT_C ( 0 );
 
   return do_run;
 }
