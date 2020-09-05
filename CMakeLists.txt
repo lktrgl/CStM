@@ -14,6 +14,8 @@ else()
 	set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG" )
 endif()
 
+add_subdirectory( contrib/lggm )
+
 include_directories (
      include
      contrib/lggm/include
@@ -26,14 +28,15 @@ set (libsources ${libsources}
      include/CStM/state_handler.h
      src/CStM/state_transition.c
      include/CStM/state_transition.h
+     include/CStM/state_diagram.h
+     src/CStM/step_state_machine.c
+     include/CStM/step_state_machine.h
      src/CStM/state_machine.c
      include/CStM/state_machine.h
      src/CStM/vector_state_machine.c
      include/CStM/vector_state_machine.h
      src/CStM/state_default_handler.c
      include/CStM/state_default_handler.h
-     contrib/lggm/src/lggm/dbgprn.c
-     contrib/lggm/include/lggm/dbgprn.h
      )
 
 add_library ( cstm
@@ -62,5 +65,6 @@ if(NOT IS_SUBPROJECT)
 	
 	target_link_libraries(cstm_app
 	     cstm
+	     lggm
 	     )
 endif()
