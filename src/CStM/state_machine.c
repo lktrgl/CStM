@@ -81,7 +81,7 @@ void run_state_machine ( state_diagram_desc_t* diagram )
 
         s_do_enter ( current_state );
 
-        uint8_t keep_state = 1;
+        uint8_t do_run = 1;
 
         do
         {
@@ -103,7 +103,7 @@ void run_state_machine ( state_diagram_desc_t* diagram )
 
               if ( ( *transition )->is_transition && ( *transition )->is_transition ( data ) )
               {
-                keep_state = 0;
+                do_run = 0;
 
                 if ( ( *transition )->next_state_node_index < diagram->states_count )
                 {
@@ -126,7 +126,7 @@ void run_state_machine ( state_diagram_desc_t* diagram )
 
           } /* if ( current_state->transitions ) */
         }
-        while ( keep_state );
+        while ( do_run );
 
         LGGM_PRINT_MSG_C ( 0, "Do leave" );
 
