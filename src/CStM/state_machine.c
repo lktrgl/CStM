@@ -80,6 +80,29 @@ static const state_transition_desc_t* s_is_condition ( const state_node_desc_t* 
 
 /*---------------------------------------------------------------------------*/
 
+void init_state_machine ( state_diagram_desc_t* diagram )
+{
+  LGGM_CALL_IN_C ( 1 );
+
+  if ( diagram )
+  {
+    LGGM_PRINT_MSG_C ( 0, "Do diagram" );
+
+    const state_node_desc_t* current_state = diagram->current_state;
+
+    if ( current_state )
+    {
+        LGGM_PRINT_MSG_C ( 0, "Do enter" );
+
+        s_do_enter ( current_state );
+    }
+  }
+
+  LGGM_CALL_OUT_C ( 1 );
+}
+
+/*---------------------------------------------------------------------------*/
+
 void run_state_machine ( state_diagram_desc_t* diagram )
 {
   LGGM_CALL_IN_C ( 1 );
@@ -94,10 +117,6 @@ void run_state_machine ( state_diagram_desc_t* diagram )
       LGGM_PRINT_INT_C ( 0, diagram->current_state->state_index );
 
         const state_node_desc_t* current_state = diagram->current_state;
-
-        LGGM_PRINT_MSG_C ( 0, "Do enter" );
-
-        s_do_enter ( current_state );
 
         uint8_t do_run = 1;
 

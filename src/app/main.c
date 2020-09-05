@@ -11,6 +11,7 @@ int main ( int argc, char** argv )
 
   LGGM_CALL_IN_C ( 1 );
 
+  init_state_machine ( &g_app_state_diagram );
   run_state_machine ( &g_app_state_diagram );
 
   LGGM_TRACE_C ( 1 );

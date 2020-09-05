@@ -17,6 +17,12 @@ typedef struct state_diagram_desc_tag
 
 /*---------------------------------------------------------------------------*/
 
-void run_state_machine ( state_diagram_desc_t* machine );
+void init_state_machine ( state_diagram_desc_t* diagram );
+
+/*---------------------------------------------------------------------------*/
+
+void run_state_machine ( state_diagram_desc_t* diagram );
+
+/*---------------------------------------------------------------------------*/
 
 #endif /* STATE_MACHINE_H_INCLUDED */
