@@ -7,6 +7,56 @@
 
 /*---------------------------------------------------------------------------*/
 
+//static void s_do_enter ( const state_node_desc_t* state )
+//{
+//  if ( state->state_handler && state->state_handler->enter )
+//  {
+//    state->state_handler->enter ( state->data );
+//  }
+//}
+
+/*---------------------------------------------------------------------------*/
+
+static void s_do_input ( const state_node_desc_t* state )
+{
+  if ( state->state_handler && state->state_handler->input )
+  {
+    state->state_handler->input ( state->data );
+  }
+}
+
+/*---------------------------------------------------------------------------*/
+
+static void s_do_run ( const state_node_desc_t* state )
+{
+  if ( state->state_handler && state->state_handler->run )
+  {
+    state->state_handler->run ( state->data );
+  }
+}
+
+/*---------------------------------------------------------------------------*/
+
+static void s_do_output ( const state_node_desc_t* state )
+{
+  if ( state->state_handler && state->state_handler->output )
+  {
+    state->state_handler->output ( state->data );
+  }
+}
+
+/*---------------------------------------------------------------------------*/
+
+//static void s_do_leave ( const state_node_desc_t* state )
+//{
+//  if ( state->state_handler && state->state_handler->leave )
+//  {
+//    state->state_handler->leave ( state->data );
+//  }
+//}
+
+/*---------------------------------------------------------------------------*/
+
 void run_state_machine ( state_diagram_desc_t* diagram )
 {
   LGGM_CALL_IN_C ( 1 );
@@ -39,28 +89,11 @@ void run_state_machine ( state_diagram_desc_t* diagram )
 
         do
         {
-          LGGM_PRINT_MSG_C ( 0, "Do loop state" );
+          LGGM_PRINT_MSG_C ( 0, "Do run" );
 
-          if ( state_handler->input )
-          {
-            LGGM_PRINT_MSG_C ( 0, "Do input state handler" );
-
-            state_handler->input ( data );
-          }
-
-          if ( state_handler->run )
-          {
-            LGGM_PRINT_MSG_C ( 0, "Do run state handler" );
-
-            state_handler->run ( data );
-          }
-
-          if ( state_handler->output )
-          {
-            LGGM_PRINT_MSG_C ( 0, "Do output state handler" );
-
-            state_handler->output ( data );
-          }
+          s_do_input ( current_state );
+          s_do_run ( current_state );
+          s_do_output ( current_state );
 
           if ( current_state->transitions )
           {
