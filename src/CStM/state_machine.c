@@ -7,13 +7,13 @@
 
 /*---------------------------------------------------------------------------*/
 
-//static void s_do_enter ( const state_node_desc_t* state )
-//{
-//  if ( state->state_handler && state->state_handler->enter )
-//  {
-//    state->state_handler->enter ( state->data );
-//  }
-//}
+static void s_do_enter ( const state_node_desc_t* state )
+{
+  if ( state->state_handler && state->state_handler->enter )
+  {
+    state->state_handler->enter ( state->data );
+  }
+}
 
 /*---------------------------------------------------------------------------*/
 
@@ -47,13 +47,13 @@ static void s_do_output ( const state_node_desc_t* state )
 
 /*---------------------------------------------------------------------------*/
 
-//static void s_do_leave ( const state_node_desc_t* state )
-//{
-//  if ( state->state_handler && state->state_handler->leave )
-//  {
-//    state->state_handler->leave ( state->data );
-//  }
-//}
+static void s_do_leave ( const state_node_desc_t* state )
+{
+  if ( state->state_handler && state->state_handler->leave )
+  {
+    state->state_handler->leave ( state->data );
+  }
+}
 
 /*---------------------------------------------------------------------------*/
 
@@ -75,15 +75,11 @@ void run_state_machine ( state_diagram_desc_t* diagram )
         LGGM_PRINT_MSG_C ( 0, "Do state handlers" );
 
         const state_node_desc_t* current_state = diagram->current_state;
-        const state_handler_desc_t* state_handler = current_state->state_handler;
         void* data = current_state->data;
 
-        if ( state_handler->enter )
-        {
-          LGGM_PRINT_MSG_C ( 0, "Do enter state handler" );
+        LGGM_PRINT_MSG_C ( 0, "Do enter" );
 
-          state_handler->enter ( data );
-        }
+        s_do_enter ( current_state );
 
         uint8_t keep_state = 1;
 
@@ -132,12 +128,9 @@ void run_state_machine ( state_diagram_desc_t* diagram )
         }
         while ( keep_state );
 
-        if ( state_handler->leave )
-        {
-          LGGM_PRINT_MSG_C ( 0, "Do leave state handler" );
+        LGGM_PRINT_MSG_C ( 0, "Do leave" );
 
-          state_handler->leave ( data );
-        }
+        s_do_leave ( current_state );
 
       } /* if ( diagram->current_state->state_handler ) */
       else
