@@ -25,14 +25,14 @@ void run_state_machine ( state_diagram_desc_t* diagram )
         LGGM_PRINT_MSG_C ( 0, "Do state handlers" );
 
         const state_node_desc_t* current_state = diagram->current_state;
-        const state_handler_desc_t* state = current_state->state_handler;
+        const state_handler_desc_t* state_handler = current_state->state_handler;
         void* data = current_state->data;
 
-        if ( state->enter )
+        if ( state_handler->enter )
         {
           LGGM_PRINT_MSG_C ( 0, "Do enter state handler" );
 
-          state->enter ( data );
+          state_handler->enter ( data );
         }
 
         uint8_t keep_state = 1;
@@ -41,25 +41,25 @@ void run_state_machine ( state_diagram_desc_t* diagram )
         {
           LGGM_PRINT_MSG_C ( 0, "Do loop state" );
 
-          if ( state->input )
+          if ( state_handler->input )
           {
             LGGM_PRINT_MSG_C ( 0, "Do input state handler" );
 
-            state->input ( data );
+            state_handler->input ( data );
           }
 
-          if ( state->run )
+          if ( state_handler->run )
           {
             LGGM_PRINT_MSG_C ( 0, "Do run state handler" );
 
-            state->run ( data );
+            state_handler->run ( data );
           }
 
-          if ( state->output )
+          if ( state_handler->output )
           {
             LGGM_PRINT_MSG_C ( 0, "Do output state handler" );
 
-            state->output ( data );
+            state_handler->output ( data );
           }
 
           if ( current_state->transitions )
@@ -99,11 +99,11 @@ void run_state_machine ( state_diagram_desc_t* diagram )
         }
         while ( keep_state );
 
-        if ( state->leave )
+        if ( state_handler->leave )
         {
           LGGM_PRINT_MSG_C ( 0, "Do leave state handler" );
 
-          state->leave ( data );
+          state_handler->leave ( data );
         }
 
       } /* if ( diagram->current_state->state_handler ) */
