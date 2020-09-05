@@ -132,6 +132,8 @@ void run_state_machine ( state_diagram_desc_t* diagram )
 
         if ( signaled_transition )
         {
+          do_run = 0x00;
+
           if ( signaled_transition->next_state_node_index < diagram->states_count )
           {
             LGGM_PRINT_MSG_C ( 1, "Do change state" );
@@ -154,8 +156,6 @@ void run_state_machine ( state_diagram_desc_t* diagram )
             LGGM_PRINT_MSG_C ( 0, "Do leave" );
 
             s_do_leave ( current_state );
-
-            do_run = 0x00;
           }
         } /* if ( signaled_transition ) */
       }
