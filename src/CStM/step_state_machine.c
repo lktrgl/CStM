@@ -9,7 +9,7 @@
 
 static void s_do_enter ( const state_node_desc_t* state )
 {
-  if ( state->state_handler && state->state_handler->enter )
+  if ( state->state_handler->enter )
   {
     state->state_handler->enter ( state->data );
   }
@@ -19,7 +19,7 @@ static void s_do_enter ( const state_node_desc_t* state )
 
 static void s_do_input ( const state_node_desc_t* state )
 {
-  if ( state->state_handler && state->state_handler->input )
+  if ( state->state_handler->input )
   {
     state->state_handler->input ( state->data );
   }
@@ -29,7 +29,7 @@ static void s_do_input ( const state_node_desc_t* state )
 
 static void s_do_run ( const state_node_desc_t* state )
 {
-  if ( state->state_handler && state->state_handler->run )
+  if ( state->state_handler->run )
   {
     state->state_handler->run ( state->data );
   }
@@ -39,7 +39,7 @@ static void s_do_run ( const state_node_desc_t* state )
 
 static void s_do_output ( const state_node_desc_t* state )
 {
-  if ( state->state_handler && state->state_handler->output )
+  if ( state->state_handler->output )
   {
     state->state_handler->output ( state->data );
   }
@@ -49,7 +49,7 @@ static void s_do_output ( const state_node_desc_t* state )
 
 static void s_do_leave ( const state_node_desc_t* state )
 {
-  if ( state->state_handler && state->state_handler->leave )
+  if ( state->state_handler->leave )
   {
     state->state_handler->leave ( state->data );
   }
@@ -113,7 +113,7 @@ uint8_t run_step_state_machine ( state_diagram_desc_t* diagram )
   {
     LGGM_PRINT_MSG_C ( 0, "Do diagram" );
 
-    if ( diagram->current_state )
+    if ( diagram->current_state && diagram->current_state->state_handler )
     {
       LGGM_PRINT_MSG_C ( 0, "Do current state" );
       LGGM_PRINT_INT_C ( 0, diagram->current_state->state_index );
