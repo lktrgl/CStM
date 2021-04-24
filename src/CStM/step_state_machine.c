@@ -90,7 +90,10 @@ void init_step_state_machine ( state_diagram_desc_t* diagram )
 
     const state_node_desc_t* current_state = diagram->current_state;
 
+#ifdef CSTM_CFG_CHECKED_BUILD
+
     if ( current_state )
+#endif /*CSTM_CFG_CHECKED_BUILD*/
     {
       LGGM_PRINT_MSG_C ( 0, "Do enter" );
 

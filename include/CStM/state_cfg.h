@@ -5,4 +5,6 @@
 /*#define DBGPRN_ENABLED
  */
 
+#define CSTM_CFG_CHECKED_BUILD
+
 #endif /* INCLUDE_CSTM_STATE_CFG_H_ */
