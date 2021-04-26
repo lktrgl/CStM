@@ -14,7 +14,9 @@ else()
 	set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG" )
 endif()
 
-add_subdirectory( contrib/lggm )
+if(NOT IS_SUBPROJECT)
+	add_subdirectory( contrib/lggm )
+endif()
 
 include_directories (
      include
