@@ -90,14 +90,16 @@ void init_step_state_machine ( state_diagram_desc_t* diagram )
 
     const state_node_desc_t* current_state = diagram->current_state;
 
-#ifdef CSTM_CFG_CHECKED_BUILD
+#ifdef CSTM_CFG_CHECKED_BUILD_ENABLED
 
     if ( current_state )
-#endif /*CSTM_CFG_CHECKED_BUILD*/
+#endif /*CSTM_CFG_CHECKED_BUILD_ENABLED*/
     {
       LGGM_PRINT_MSG_C ( 0, "Do enter" );
 
+#ifdef CSTM_CFG_ON_ENTER_STATE_ENABLED
       s_do_enter ( current_state );
+#endif /*CSTM_CFG_ON_ENTER_STATE_ENABLED*/
     }
   }
 
@@ -125,9 +127,15 @@ uint8_t run_step_state_machine ( state_diagram_desc_t* diagram )
 
       LGGM_PRINT_MSG_C ( 0, "Do run" );
 
+#ifdef CSTM_CFG_GET_INPUT_ENABLED
       s_do_input ( current_state );
+#endif /*CSTM_CFG_GET_INPUT_ENABLED*/
+
       s_do_run ( current_state );
+
+#ifdef CSTM_CFG_SET_OUTPUT_ENABLED
       s_do_output ( current_state );
+#endif /*CSTM_CFG_SET_OUTPUT_ENABLED*/
 
       const state_transition_desc_t* signaled_transition = s_is_condition ( current_state );
 
@@ -143,11 +151,15 @@ uint8_t run_step_state_machine ( state_diagram_desc_t* diagram )
 
           LGGM_PRINT_MSG_C ( 0, "Do leave" );
 
+#ifdef CSTM_CFG_ON_LEAVE_STATE_ENABLED
           s_do_leave ( current_state );
+#endif /*CSTM_CFG_ON_LEAVE_STATE_ENABLED*/
 
           LGGM_PRINT_MSG_C ( 0, "Do enter" );
 
+#ifdef CSTM_CFG_ON_ENTER_STATE_ENABLED
           s_do_enter ( diagram->current_state );
+#endif /*CSTM_CFG_ON_ENTER_STATE_ENABLED*/
         }
         else
         {
@@ -156,7 +168,9 @@ uint8_t run_step_state_machine ( state_diagram_desc_t* diagram )
 
           LGGM_PRINT_MSG_C ( 0, "Do leave" );
 
+#ifdef CSTM_CFG_ON_LEAVE_STATE_ENABLED
           s_do_leave ( current_state );
+#endif /*CSTM_CFG_ON_LEAVE_STATE_ENABLED*/
         }
       } /* if ( signaled_transition ) */
 

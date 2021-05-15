@@ -56,10 +56,10 @@ void run_vector_state_machine ( vector_state_diagram_desc_t* vector_machine )
 
         state_diagram_desc_t* current_diagram = * ( vector_machine->diagrams + diagram_index );
 
-#ifdef CSTM_CFG_CHECKED_BUILD
+#ifdef CSTM_CFG_CHECKED_BUILD_ENABLED
 
         if ( current_diagram )
-#endif /*CSTM_CFG_CHECKED_BUILD*/
+#endif /*CSTM_CFG_CHECKED_BUILD_ENABLED*/
         {
           const state_node_desc_t* current_state = current_diagram->current_state;
 
