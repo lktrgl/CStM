@@ -7,6 +7,12 @@
 
 /*---------------------------------------------------------------------------*/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/*---------------------------------------------------------------------------*/
+
 typedef struct vector_state_diagram_desc_tag
 {
   state_diagram_desc_t** diagrams;
@@ -20,6 +26,12 @@ void init_vector_state_machine ( vector_state_diagram_desc_t* vector_machine );
 /*---------------------------------------------------------------------------*/
 
 void run_vector_state_machine ( vector_state_diagram_desc_t* vector_machine );
+
+/*---------------------------------------------------------------------------*/
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif
 
 /*---------------------------------------------------------------------------*/
 
